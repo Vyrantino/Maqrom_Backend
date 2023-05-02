@@ -8,6 +8,7 @@ import { hash , compare } from 'bcrypt'
 import { JwtService } from '@nestjs/jwt' ;
 
 
+
 @Injectable()
 export class AuthsService{
     constructor( 
@@ -37,10 +38,10 @@ export class AuthsService{
 
         const data = {
             user: findUser, 
-            token ,
+            token      
         } ; 
 
-        return data ; 
+        return data.token ; 
     }    
 
 }

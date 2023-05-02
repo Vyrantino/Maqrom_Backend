@@ -21,6 +21,11 @@ export class CardsService {
     return this.cardsRepository.find();
   }
 
+  getRouteCards( ): Promise<Cards[]>{
+    return this.cardsRepository.find( { where: { route: "Nosotros" } } ) ;
+
+  }
+
   getCard(idCard: number): Promise<Cards | null> {
     return this.cardsRepository.findOneBy({ idCard });
   }
