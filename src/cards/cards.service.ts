@@ -21,14 +21,15 @@ export class CardsService {
     return this.cardsRepository.find();
   }
 
-  getRouteCards( ): Promise<Cards[]>{
-    return this.cardsRepository.find( { where: { route: "Nosotros" } } ) ;
-
+  getRouteCards( route: string ): Promise<Cards[] | null>{
+    return this.cardsRepository.find(  ) ;
   }
+
 
   getCard(idCard: number): Promise<Cards | null> {
     return this.cardsRepository.findOneBy({ idCard });
   }
+
 
   async deleteCard(idCard: number): Promise<void> {
     await this.cardsRepository.delete(idCard);

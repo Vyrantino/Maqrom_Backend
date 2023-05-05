@@ -16,6 +16,7 @@ import { CreateCardDto } from './dto/create-card.dto';
 import { UpdateCardDto } from './dto/update-card.dto';
 
 import { ApiBearerAuth , ApiTags } from '@nestjs/swagger';
+import { query } from 'express';
 
 
 
@@ -28,21 +29,27 @@ export class CardsController {
   constructor( private cardsService: CardsService ){}
       // @UseGuards( JwtAuthGuard )
 
-      @Get('Nosotros')
-      getNosotrosCards(  ): Promise<Cards[]>{
-        return this.cardsService.getRouteCards() ; 
+
+      @Get(':route')
+      getNosotrosCards( @Param( 'route' ) route: string  ): Promise<Cards[]>{
+        return this.cardsService.getRouteCards( route ) ; 
 
       }
 
-      @Get(':idCard')
+      @Get()
+      Consulta( @Query(  ) route: string  ): Promise<Cards[]>{
+        return this.cardsService.getRouteCards( route ) ; 
+
+      }
+      
+
+      @Get('id/:idCard')
       getCard( @Param('idCard' , ParseIntPipe) idCard: number ):
         Promise<Cards>{
             return this.cardsService.getCard( idCard ) ;
 
       }
-
      
-
       @Get()
         getCards(): Promise<Cards[]> {
         return this.cardsService.getCards() ;
