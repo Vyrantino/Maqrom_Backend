@@ -61,13 +61,13 @@ export class CardsController {
 
       }
 
-      @Delete(':idCard')
+      @Delete('id/:idCard')
       deleteCard( @Param( 'idCard' , ParseIntPipe ) idCard: number){
           return this.cardsService.deleteCard( idCard ) ;
 
       }
 
-      @Patch( ':idCard' )
+      @Patch( 'id/:idCard' )
       updateCard( @Param( 'idCard' , ParseIntPipe ) idCard: number , @Body()
         card: UpdateCardDto
       ){

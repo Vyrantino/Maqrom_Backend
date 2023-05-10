@@ -6,7 +6,9 @@ import { Cards } from './cards/cards.entity';
 import { CardsModule } from './cards/cards.module';
 import { AuthsModule } from './auth/auth.module';
 import { Auths } from './auth/auth.entity';
-
+import { ImagesModule } from './images/images.module';
+import { Images } from './images/images.entity';
+import { HttpModule } from '@nestjs/axios';
 
 
 @Module({
@@ -19,11 +21,13 @@ import { Auths } from './auth/auth.entity';
       username: 'root',
       password: 'root',
       database: 'maqrom',
-      entities: [Cards, Auths],
+      entities: [Cards, Auths, Images],
       synchronize: true, /* Desactivar cuando pase a modo produccion */
     }),
+    HttpModule,
     CardsModule,
-    AuthsModule
+    AuthsModule,
+    ImagesModule
   ],
   controllers: [
     AppController ,

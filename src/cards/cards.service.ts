@@ -22,7 +22,7 @@ export class CardsService {
   }
 
   getRouteCards( route: string ): Promise<Cards[] | null>{
-    return this.cardsRepository.find(  ) ;
+    return this.cardsRepository.find( { where: { route } } ) ;
   }
 
 

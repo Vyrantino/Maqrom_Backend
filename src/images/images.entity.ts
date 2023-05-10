@@ -5,8 +5,17 @@ export class Images {
   @PrimaryGeneratedColumn()
   idImage: number;
 
-  @Column( "varchar" , { length: 150 } )
-  img: string;
+  @Column( "varchar"  )
+  name: string ;
+
+  @Column( "varchar" )
+  path: string ;
+
+  @Column( "varchar" )
+  type: string ;
+
+  @Column( "varchar" )
+  modified: string ;
 
   @Column( "varchar" , { length: 40 , nullable : true } )
   alt: string;

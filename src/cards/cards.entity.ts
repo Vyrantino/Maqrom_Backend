@@ -8,7 +8,7 @@ export class Cards {
   @Column("varchar" , { length: 50 })
   route: string;
 
-  @Column("varchar", { length: 150 , nullable: true })
+  @Column("varchar", { length: 255 , nullable: true })
   img: string;
 
   @Column( "varchar" , { length: 30 } )
