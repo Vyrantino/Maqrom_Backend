@@ -36,7 +36,6 @@ export class CardsService {
   }
 
   updateCard( idCard: number, card: UpdateCardDto ){
-    return this.cardsRepository.update( { idCard } , card )
-
+    return this.cardsRepository.update(  { idCard: idCard }  , card   )
   }
 }

@@ -2,6 +2,8 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Papers } from './papers.entity';
+import { UpdatePaperDto } from './dto/update-paper.dto';
+import { CreatePaperDto } from './dto/create-paper.dto';
 
 @Injectable()
 export class PapersService {
@@ -10,15 +12,21 @@ export class PapersService {
     private papersRepository: Repository<Papers>,
   ) {}
 
-  findAll(): Promise<Papers[]> {
+  getPapers(): Promise<Papers[]> {
     return this.papersRepository.find();
   }
 
-  findOne(idPaper: number): Promise<Papers | null> {
+  getPaper(idPaper: number): Promise<Papers | null> {
     return this.papersRepository.findOneBy({ idPaper });
   }
 
-  async remove(idPaper: number): Promise<void> {
-    await this.papersRepository.delete(idPaper);
+  updatePaper( idPaper: number, paper: UpdatePaperDto ){
+    return this.papersRepository.update( { idPaper } , paper )
   }
+
+  createPaper( paper: CreatePaperDto ){
+    const newPaper = this.papersRepository.create( paper ) ;
+    return this.papersRepository.save( newPaper ) ;
+  }
+
 }

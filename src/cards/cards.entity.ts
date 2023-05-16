@@ -16,7 +16,12 @@ export class Cards {
 
   @Column( "varchar" , { length: 255 } )
   content: string;
+
+  @Column( "varchar" , { length: 255 } )
+  article: string ;
   
   @Column( { default: false  } )
   isLocked: boolean;
+
+
 }

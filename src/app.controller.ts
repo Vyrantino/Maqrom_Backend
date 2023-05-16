@@ -1,4 +1,15 @@
-import { Controller, Get, Redirect , Post , UseInterceptors, UploadedFile, ParseFilePipe, FileTypeValidator, MaxFileSizeValidator } from '@nestjs/common';
+import { 
+  Controller, 
+  Get, 
+  Redirect , 
+  Post , 
+  UseInterceptors, 
+  UploadedFile, 
+  ParseFilePipe, 
+  FileTypeValidator, 
+  MaxFileSizeValidator,
+  Body 
+} from '@nestjs/common';
 import { AppService } from './app.service';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
@@ -30,15 +41,16 @@ export class AppController {
   async uploadFile( @UploadedFile(
     new ParseFilePipe({
       validators: [
-        new FileTypeValidator({ fileType: '.(png|jpeg|jpg)' }),
+        new FileTypeValidator({ fileType: '.(png|jpeg|jpg|webp)' }),
         new MaxFileSizeValidator({ maxSize: 1024 * 1024 * 4 }),
       ],
     }),
 
-  ) file: Express.Multer.File  ){
+  ) file: Express.Multer.File ,
+    @Body('alt') alt: string ){
     console.log( file )
     const archivo = {
-      alt: 'meh',
+      alt: alt,
       name: file.filename ,
       path: file.path,
       type: file.mimetype,

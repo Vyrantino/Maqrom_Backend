@@ -1,7 +1,6 @@
 export class UpdateCardDto{
-
-    img?: string 
-    title? : string 
-    content?: string
-    
+    title? : string ;
+    content?: string ;
+    img?: string ;
+    article?: string ; 
 }

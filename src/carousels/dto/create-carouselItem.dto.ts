@@ -1,9 +1,8 @@
-export class CreateCardDto{
+export class CreateCarouselItem{
     route: string ;
     img: string ;
     title : string ;
     content: string ;
-    isLocked: boolean ;
     article: string ;
 }
 

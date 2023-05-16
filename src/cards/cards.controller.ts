@@ -30,17 +30,17 @@ export class CardsController {
       // @UseGuards( JwtAuthGuard )
 
 
-      @Get(':route')
+      @Get('route/:route')
       getNosotrosCards( @Param( 'route' ) route: string  ): Promise<Cards[]>{
         return this.cardsService.getRouteCards( route ) ; 
 
       }
 
-      @Get()
-      Consulta( @Query(  ) route: string  ): Promise<Cards[]>{
-        return this.cardsService.getRouteCards( route ) ; 
+      // @Get()
+      // Consulta( @Query(  ) route: string  ): Promise<Cards[]>{
+      //   return this.cardsService.getRouteCards( route ) ; 
 
-      }
+      // }
       
 
       @Get('id/:idCard')
@@ -62,13 +62,13 @@ export class CardsController {
       }
 
       @Delete('id/:idCard')
-      deleteCard( @Param( 'idCard' , ParseIntPipe ) idCard: number){
+      deleteCard( @Param( 'idCard' , ParseIntPipe  ) idCard: number){
           return this.cardsService.deleteCard( idCard ) ;
 
       }
 
-      @Patch( 'id/:idCard' )
-      updateCard( @Param( 'idCard' , ParseIntPipe ) idCard: number , @Body()
+      @Patch( 'patch/:idCard' )
+      updateCard( @Param( 'idCard' ,  ParseIntPipe, ParseIntPipe  ) idCard: number , @Body()
         card: UpdateCardDto
       ){
         return this.cardsService.updateCard( idCard , card) ;

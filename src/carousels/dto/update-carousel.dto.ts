@@ -1,8 +1,8 @@
 export class UpdateCarouselDto{
     
-    img1?: string ;
-    img2?: string ; 
-    img3?: string ; 
-    title?: string ;
-    content?: string ; 
+    route?: string ;
+    img?: string ;
+    title? : string ;
+    content?: string ;
+    article?: string ;
 }

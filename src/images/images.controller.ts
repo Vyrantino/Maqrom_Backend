@@ -5,7 +5,8 @@ import {
   Body , 
   Param ,
   Res,
-  ParseIntPipe
+  ParseIntPipe,
+  Delete
 } from '@nestjs/common';
 import { ImagesService } from './images.service';
 import { UpdateImageDto } from './dto/update-image.dto';
@@ -35,16 +36,23 @@ export class ImagesController {
  
   @Get(':filename')
   serveImage( @Param('filename') filename: string, @Res() res: Response){
-    const imagePath = join( __dirname , '../..' ,'uploadedImages' , filename ) ; 
+    
+    const imagePath = filename === 'sommie.jpg' ? join( __dirname , '../..' , filename ) : join( __dirname , '../..' ,'uploadedImages' , filename ) ;
     res.sendFile( imagePath ) ;
+    
 
   }
 
-  
+    
+  @Get()
+  getImages(): Promise<Images[]> {
+    return this.imagesService.getImages() ;
+  }
 
-  // @Get()
-  // async getAllFiles() {
-  //   const filesInfo = await this.imagesService.getFilesInfo() ;
-  //   return filesInfo;
-  // }
+
+  @Delete('name/:name')
+  deleteImage( @Param('name') name: string){
+      return this.imagesService.remove( name ) ;
+
+  }
 }
