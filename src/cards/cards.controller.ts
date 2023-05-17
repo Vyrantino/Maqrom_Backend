@@ -31,16 +31,16 @@ export class CardsController {
 
 
       @Get('route/:route')
-      getNosotrosCards( @Param( 'route' ) route: string  ): Promise<Cards[]>{
+      getRouteCards( @Param( 'route' ) route: string  ): Promise<Cards[]>{
         return this.cardsService.getRouteCards( route ) ; 
 
       }
 
-      // @Get()
-      // Consulta( @Query(  ) route: string  ): Promise<Cards[]>{
-      //   return this.cardsService.getRouteCards( route ) ; 
+      @Get('article/:article')
+      getArticleCards( @Param( 'article' ) article: string  ): Promise<Cards[]>{
+        return this.cardsService.getArticleCards( article ) ; 
 
-      // }
+      }
       
 
       @Get('id/:idCard')

@@ -21,6 +21,12 @@ export class CarouselsController {
   @Get('route/:route')
   getRouteCarouselItems( @Param( 'route' ) route: string  ): Promise<CarouselItems[]>{
     return this.carouselsService.getCarouselItems( route ) ; 
+  
+  }
+
+  @Get('article/:article')
+  getArticleCarouselItems( @Param( 'article' ) article: string  ): Promise<CarouselItems[]>{
+    return this.carouselsService.getArticleCarouselItems( article ) ; 
 
   }
 

@@ -24,6 +24,10 @@ export class CardsService {
   getRouteCards( route: string ): Promise<Cards[] | null>{
     return this.cardsRepository.find( { where: { route } } ) ;
   }
+  
+  getArticleCards( article: string ): Promise<Cards[] | null>{
+    return this.cardsRepository.find( { where: { article } } ) ;
+  }
 
 
   getCard(idCard: number): Promise<Cards | null> {

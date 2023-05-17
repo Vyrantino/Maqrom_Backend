@@ -13,9 +13,6 @@ import { CreateArticleDto } from './dto/create-article.dto';
 import { UpdateArticleDto } from './dto/update-article.dto';
 
 import { ApiBearerAuth , ApiTags } from '@nestjs/swagger';
-import { query } from 'express';
-
-
 
 
 
@@ -25,7 +22,6 @@ import { query } from 'express';
 export class ArticlesController {
   constructor( private articlesService: ArticlesService ){}
 
-     
       @Get()
         getArticles(): Promise<Articles[]> {
         return this.articlesService.getArticles() ;

@@ -29,6 +29,10 @@ export class CarouselItemsService {
     return this.carouselsRepository.find( { where: { route } } ) ;
   }
 
+  getArticleCarouselItems( article: string ): Promise<CarouselItems[] | null>{
+    return this.carouselsRepository.find( { where: { article } } ) ;
+  }
+
   createCarouselItem( carouselItem: CreateCarouselItem ){
     const newCarouselItem = this.carouselsRepository.create( carouselItem ) ;
     return this.carouselsRepository.save( newCarouselItem ) ;
