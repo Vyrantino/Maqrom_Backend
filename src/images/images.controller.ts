@@ -22,7 +22,7 @@ export class ImagesController {
 
 
   @Post()
-      createCard( @Body() newImage: UpdateImageDto  ){
+      createImage( @Body() newImage: UpdateImageDto  ){
         return this.imagesService.registerImage( newImage );
 
   }
@@ -39,14 +39,18 @@ export class ImagesController {
     
     const imagePath = filename === 'sommie.jpg' ? join( __dirname , '../..' , filename ) : join( __dirname , '../..' ,'uploadedImages' , filename ) ;
     res.sendFile( imagePath ) ;
-    
-
   }
 
     
   @Get()
   getImages(): Promise<Images[]> {
     return this.imagesService.getImages() ;
+  }
+
+  @Get( 'gallery/:gallery' )
+  getImageGallery( @Param( 'gallery' ) gallery: string ): Promise<Images[]>{
+    return this. imagesService.getImageGallery( gallery ) ;
+
   }
 
 

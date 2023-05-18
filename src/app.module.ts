@@ -15,6 +15,8 @@ import { ArticlesModule } from './articles/articles.module';
 import { PapersModule } from './papers/papers.module';
 import { Papers } from './papers/papers.entity';
 import { Articles } from './articles/articles.entity';
+import { GalleriesModule } from './galleries/galleries.module';
+import { Galleries } from './galleries/galleries.entity';
 
 
 @Module({
@@ -27,7 +29,7 @@ import { Articles } from './articles/articles.entity';
       username: 'root',
       password: 'root',
       database: 'maqrom',
-      entities: [Cards, Auths, Images, CarouselItems, Papers, Articles],
+      entities: [Cards, Auths, Images, CarouselItems, Papers, Articles, Galleries],
       synchronize: true, /* Desactivar cuando pase a modo produccion */
     }),
     HttpModule,
@@ -36,7 +38,8 @@ import { Articles } from './articles/articles.entity';
     ImagesModule,
     CarouselItemsModule,
     ArticlesModule,
-    PapersModule
+    PapersModule,
+    GalleriesModule
   ],
   controllers: [
     AppController ,

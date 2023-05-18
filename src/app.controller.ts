@@ -35,27 +35,28 @@ export class AppController {
 
         },
      }) 
-
-   
   })) 
-  async uploadFile( @UploadedFile(
-    new ParseFilePipe({
-      validators: [
-        new FileTypeValidator({ fileType: '.(png|jpeg|jpg|webp)' }),
-        new MaxFileSizeValidator({ maxSize: 1024 * 1024 * 4 }),
-      ],
-    }),
-
-  ) file: Express.Multer.File ,
-    @Body('alt') alt: string ){
+  async uploadFile( 
+    @UploadedFile(
+      new ParseFilePipe({
+        validators: [
+          new FileTypeValidator({ fileType: '.(png|jpeg|jpg|webp|)' }),
+          new MaxFileSizeValidator({ maxSize: 1024 * 1024 * 20 }),
+        ],
+      }),
+    ) 
+    file: Express.Multer.File ,
+    @Body('alt') alt: string,
+    @Body('gallery') gallery: string 
+  ){
     console.log( file )
     const archivo = {
       alt: alt,
       name: file.filename ,
       path: file.path,
       type: file.mimetype,
-      modified: Date.now()
-
+      modified: Date.now(),
+      gallery: gallery
     }
     try{
       const registrarArchivo = await axios.post( 'http://localhost:3000/images', archivo  )
@@ -65,8 +66,6 @@ export class AppController {
       console.error( error ) ;
 
     }
-
-  
   }
   
 }

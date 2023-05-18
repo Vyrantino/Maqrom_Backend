@@ -5,5 +5,6 @@ export class UpdateImageDto{
     path: string ;
     type: string ; 
     modified: string ; 
+    gallery?: string ;
 
 }

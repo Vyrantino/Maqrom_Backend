@@ -20,4 +20,7 @@ export class Images {
   @Column( "varchar" , { length: 40 , nullable : true } )
   alt: string;
 
+  @Column( "varchar")
+  gallery: string;
+
 }

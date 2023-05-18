@@ -36,5 +36,10 @@ export class ImagesService {
     return this.imagesRepository.find();
   }
 
+  getImageGallery( gallery: string ): Promise<Images[]>{
+    return this.imagesRepository.find( { where: { gallery }  } );
+
+  }
+
 
 }
