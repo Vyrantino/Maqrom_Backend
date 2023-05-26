@@ -19,16 +19,26 @@ export class PapersController {
   constructor( private papersService: PapersService ) {}
 
 
-  @Get('id/:idPaper')
-  getPaper( @Param('idPaper' , ParseIntPipe) idPaper: number ):
-    Promise<Papers>{
-        return this.papersService.getPaper( idPaper ) ;
-
-  }
  
   @Get()
     getPapers(): Promise<Papers[]> {
     return this.papersService.getPapers() ;
+  }
+
+  @Get('id/:idPaper')
+  getPaper( @Param('idPaper' , ParseIntPipe) idPaper: number ):
+    Promise<Papers>{
+        return this.papersService.getPaper( idPaper ) ;
+  }
+
+  @Get( 'route/:route' )
+    getRoutePapers( @Param( 'route' ) route: string  ): Promise<Papers[]> {
+    return this.papersService.getRoutePapers( route ) ;
+  }
+
+  @Get( 'article/:article' )
+    getArticlePapers( @Param( 'article' ) article: string  ): Promise<Papers[]> {
+    return this.papersService.getArticlePapers( article ) ;
   }
 
   @Post()
@@ -42,5 +52,11 @@ export class PapersController {
     paper: UpdatePaperDto
   ){
     return this.papersService.updatePaper( idPaper , paper ) ;
+  }
+
+  @Delete('id/:idPaper')
+  deleteCard( @Param( 'idPaper' , ParseIntPipe  ) idPaper: number){
+      return this.papersService.deletePaper( idPaper ) ;
+
   }
 }

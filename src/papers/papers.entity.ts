@@ -5,16 +5,19 @@ export class Papers {
   @PrimaryGeneratedColumn()
   idPaper: number;
 
-  @Column( "varchar" , { length : 255 } )
+  @Column( "varchar"  )
+  route: string;
+
+  @Column( "varchar"  )
   img: string;
 
-  @Column( "varchar" , { length : 30 } )
+  @Column( "varchar" )
   title: string;
 
-  @Column( "varchar" , { length : 255 , } )
+  @Column( "varchar"  )
   content: string;
 
-  @Column( "varchar" , { length: 255 , nullable : true  } )
+  @Column( "varchar" , {  nullable : true  } )
   link: string;
 
   @Column( "varchar" )

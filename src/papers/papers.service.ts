@@ -15,6 +15,14 @@ export class PapersService {
   getPapers(): Promise<Papers[]> {
     return this.papersRepository.find();
   }
+  
+  getRoutePapers( route: string ): Promise<Papers[]> {
+    return this.papersRepository.find( { where: { route }  } );
+  }
+
+  getArticlePapers( article: string ): Promise<Papers[]> {
+    return this.papersRepository.find( { where: { article }  } );
+  }
 
   getPaper(idPaper: number): Promise<Papers | null> {
     return this.papersRepository.findOneBy({ idPaper });
@@ -28,5 +36,12 @@ export class PapersService {
     const newPaper = this.papersRepository.create( paper ) ;
     return this.papersRepository.save( newPaper ) ;
   }
+
+  async deletePaper( idPaper: number ):  Promise<void> {
+    await this.papersRepository.delete( idPaper ) ;
+  }
+
+
+
 
 }
