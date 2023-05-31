@@ -6,13 +6,15 @@ import {
   Param ,
   Res,
   ParseIntPipe,
-  Delete
+  Delete,
+  Query
 } from '@nestjs/common';
 import { ImagesService } from './images.service';
 import { UpdateImageDto } from './dto/update-image.dto';
 import { join } from 'path';
 import { Response } from 'express';
 import { Images } from './images.entity';
+import { PaginationImagesDto } from './dto/pagination-images.dto';
 
 
 @Controller('images')
@@ -42,9 +44,9 @@ export class ImagesController {
   }
 
     
-  @Get()
-  getImages(): Promise<Images[]> {
-    return this.imagesService.getImages() ;
+  @Get( )
+  getImages( @Query() pagination: PaginationImagesDto  ): Promise<Images[]> {
+    return this.imagesService.getImages( pagination ) ;
   }
 
   @Get( 'gallery/:gallery' )

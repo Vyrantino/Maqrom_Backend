@@ -4,6 +4,7 @@ import { Repository } from 'typeorm';
 import { Images } from './images.entity';
 import { UpdateImageDto } from './dto/update-image.dto';
 import * as fs from 'fs' ;
+import { PaginationImagesDto } from './dto/pagination-images.dto';
 
 @Injectable()
 export class ImagesService {
@@ -32,8 +33,8 @@ export class ImagesService {
   }
 
 
-  getImages(): Promise<Images[]> {
-    return this.imagesRepository.find();
+  getImages( { limit, offset }: PaginationImagesDto ): Promise<Images[]> {
+    return this.imagesRepository.find( { skip: offset , take: limit } );
   }
 
   getImageGallery( gallery: string ): Promise<Images[]>{
