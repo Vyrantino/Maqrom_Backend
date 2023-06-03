@@ -17,11 +17,14 @@ import { Papers } from './papers/papers.entity';
 import { Articles } from './articles/articles.entity';
 import { GalleriesModule } from './galleries/galleries.module';
 import { Galleries } from './galleries/galleries.entity';
-
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
 
 @Module({
   imports: [  
-      
+      ServeStaticModule.forRoot({
+        rootPath: join(__dirname, '..', 'maqrom'),
+      }),
       TypeOrmModule.forRoot({
       type: 'mysql',
       host: 'localhost',
