@@ -5,6 +5,7 @@ import { Images } from './images.entity';
 import { UpdateImageDto } from './dto/update-image.dto';
 import * as fs from 'fs' ;
 import { PaginationImagesDto } from './dto/pagination-images.dto';
+import path from 'path';
 
 @Injectable()
 export class ImagesService {
@@ -20,7 +21,8 @@ export class ImagesService {
   async remove(name: string): Promise<void> {
 
     //const filePath = __dirname+ `../../../uploadedImages/${name}`;
-    const filePath = `/root/Vaquero_backend/uploadedImages/${name}`;
+    //const filePath = `/root/Vaquero_backend/uploadedImages/${name}`;
+    const filePath = path.resolve("/root/Vaquero_backend/uploadedImages/" , name) ; 
     fs.unlinkSync( filePath ) ;
     await this.imagesRepository.delete( { name: name } ) ;
   }
