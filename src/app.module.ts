@@ -30,7 +30,7 @@ import { join } from 'path';
       host: 'localhost',
       port: 3306,
       username: 'root',
-      password: 'root',
+      password: 'Vyrant-93',
       database: 'maqrom',
       entities: [Cards, Auths, Images, CarouselItems, Papers, Articles, Galleries],
       synchronize: true, /* Desactivar cuando pase a modo produccion */
