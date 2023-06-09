@@ -26,7 +26,7 @@ export class AppController {
   @UseInterceptors( FileInterceptor( 'image' ,  {
      storage: diskStorage({
         destination: function( res, file, cb ){
-          cb( null, './uploadedImages' )
+          cb( null, './images/uploadedImages' )
 
         },
         filename: function( res, file, cb ){
