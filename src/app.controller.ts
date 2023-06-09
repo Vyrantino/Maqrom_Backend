@@ -59,7 +59,7 @@ export class AppController {
       gallery: gallery
     }
     try{
-      const registrarArchivo = await axios.post( 'http://localhost:3000/images', archivo  )
+      const registrarArchivo = await axios.post( 'http://147.182.177.178:80/images', archivo  )
       console.log( registrarArchivo ) ;
     }
     catch( error ){
