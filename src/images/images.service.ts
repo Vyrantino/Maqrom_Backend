@@ -21,7 +21,7 @@ export class ImagesService {
 
     async remove(name: string): Promise<void> {
 
-    const filePath = __dirname+ `../../uploadedImages/${name}`;
+    const filePath = __dirname+ `../uploadedImages/${name}`;
     fs.unlinkSync( filePath ) ;
     await this.imagesRepository.delete( { name: name } ) ;
   }
