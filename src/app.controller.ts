@@ -59,6 +59,7 @@ export class AppController {
       const registrarArchivo = await axios.post( 'http://147.182.177.178:80/images', archivo  )
       //const registrarArchivo = await axios.post( 'http://localhost:3000/images', archivo  )
       console.log( registrarArchivo ) ;
+      console.log( file.path );
     }
     catch( error ){
       console.error( error ) ;
