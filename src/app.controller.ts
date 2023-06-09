@@ -19,14 +19,11 @@ import axios from 'axios';
 @Controller()
 export class AppController {
   constructor(private readonly appService: AppService) {}
-
-  // @Redirect( 'http://localhost:5173' , 302 )
- 
   @Post()
   @UseInterceptors( FileInterceptor( 'image' ,  {
      storage: diskStorage({
         destination: function( res, file, cb ){
-          cb( null, './images/uploadedImages' )
+          cb( null, './uploadedImages' )
 
         },
         filename: function( res, file, cb ){
@@ -60,6 +57,7 @@ export class AppController {
     }
     try{
       const registrarArchivo = await axios.post( 'http://147.182.177.178:80/images', archivo  )
+      //const registrarArchivo = await axios.post( 'http://localhost:3000/images', archivo  )
       console.log( registrarArchivo ) ;
     }
     catch( error ){

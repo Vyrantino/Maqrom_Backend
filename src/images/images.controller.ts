@@ -39,7 +39,7 @@ export class ImagesController {
   @Get(':filename')
   serveImage( @Param('filename') filename: string, @Res() res: Response){
     
-    const imagePath = join( __dirname , './uploadedImages/' , filename ) ;
+    const imagePath = join( __dirname , '../..' ,'/uploadedImages/' , filename ) ;
     res.sendFile( imagePath ) ;
   }
 

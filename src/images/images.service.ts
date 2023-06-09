@@ -13,14 +13,13 @@ export class ImagesService {
     private imagesRepository: Repository<Images>,
   ) {}
 
-
-
   findOne(idImage: number): Promise<Images | null> {
     return this.imagesRepository.findOneBy({ idImage });
   }
 
   async remove(name: string): Promise<void> {
-    const filePath = __dirname+ `/uploadedImages/${name}`;
+
+    const filePath = __dirname+ `../../../uploadedImages/${name}`;
     fs.unlinkSync( filePath ) ;
     await this.imagesRepository.delete( { name: name } ) ;
   }
