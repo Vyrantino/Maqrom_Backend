@@ -20,7 +20,7 @@ import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import { ApiBearerAuth } from '@nestjs/swagger';
 
 @ApiBearerAuth()
-@UseGuards( JwtAuthGuard )
+//@UseGuards( JwtAuthGuard )
 @Controller('images')
 export class ImagesController {
   constructor ( private readonly imagesService: ImagesService ){}

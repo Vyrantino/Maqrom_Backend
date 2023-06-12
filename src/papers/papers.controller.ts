@@ -16,8 +16,8 @@ import { CreatePaperDto } from './dto/create-paper.dto';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import { ApiBearerAuth } from '@nestjs/swagger';
 
-@ApiBearerAuth()
-@UseGuards( JwtAuthGuard )
+//@ApiBearerAuth()
+//@UseGuards( JwtAuthGuard )
 @Controller('papers')
 export class PapersController {
   constructor( private papersService: PapersService ) {}

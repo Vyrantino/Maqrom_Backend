@@ -20,7 +20,7 @@ import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 
 @ApiBearerAuth()
 @ApiTags( 'Articles' )
-@UseGuards( JwtAuthGuard )
+//@UseGuards( JwtAuthGuard )
 @Controller('articles')
 export class ArticlesController {
   constructor( private articlesService: ArticlesService ){}

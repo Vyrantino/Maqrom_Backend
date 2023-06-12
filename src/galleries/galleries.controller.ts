@@ -20,7 +20,7 @@ import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 
 @ApiBearerAuth()
 @ApiTags( 'Galleries' )
-@UseGuards( JwtAuthGuard )
+//@UseGuards( JwtAuthGuard )
 @Controller('galleries')
 export class GalleriesController {
   constructor( private galleriesService: GalleriesService ){}

@@ -17,7 +17,7 @@ import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import { ApiBearerAuth } from '@nestjs/swagger';
 
 @ApiBearerAuth()
-@UseGuards( JwtAuthGuard )
+//@UseGuards( JwtAuthGuard )
 @Controller('carouselItems')
 export class CarouselsController {
   constructor( private carouselsService: CarouselItemsService ) {}

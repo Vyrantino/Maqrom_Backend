@@ -24,7 +24,7 @@ import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 
 
 @ApiBearerAuth()
-@UseGuards( JwtAuthGuard )
+//@UseGuards( JwtAuthGuard )
 @ApiTags( 'Cards' )
 @Controller('cards')
 export class CardsController {
