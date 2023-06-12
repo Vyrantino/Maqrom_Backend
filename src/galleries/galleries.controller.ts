@@ -6,6 +6,7 @@ import {
   Param,
   Delete,
   Patch,
+  UseGuards,
 } from '@nestjs/common';
 import { GalleriesService } from './galleries.service';
 import { Galleries } from './galleries.entity';
@@ -13,11 +14,13 @@ import {  CreateGalleryDto } from './dto/create-article.dto';
 import { UpdateGalleryDto } from './dto/update-article.dto';
 
 import { ApiBearerAuth , ApiTags } from '@nestjs/swagger';
+import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 
 
 
 @ApiBearerAuth()
 @ApiTags( 'Galleries' )
+@UseGuards( JwtAuthGuard )
 @Controller('galleries')
 export class GalleriesController {
   constructor( private galleriesService: GalleriesService ){}

@@ -6,6 +6,7 @@ import {
   Param,
   Delete,
   Patch,
+  UseGuards,
 } from '@nestjs/common';
 import { ArticlesService } from './articles.service';
 import { Articles } from './articles.entity';
@@ -13,11 +14,13 @@ import { CreateArticleDto } from './dto/create-article.dto';
 import { UpdateArticleDto } from './dto/update-article.dto';
 
 import { ApiBearerAuth , ApiTags } from '@nestjs/swagger';
+import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 
 
 
 @ApiBearerAuth()
 @ApiTags( 'Articles' )
+@UseGuards( JwtAuthGuard )
 @Controller('articles')
 export class ArticlesController {
   constructor( private articlesService: ArticlesService ){}

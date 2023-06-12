@@ -7,7 +7,8 @@ import {
   Res,
   ParseIntPipe,
   Delete,
-  Query
+  Query,
+  UseGuards
 } from '@nestjs/common';
 import { ImagesService } from './images.service';
 import { UpdateImageDto } from './dto/update-image.dto';
@@ -15,8 +16,11 @@ import { join } from 'path';
 import { Response } from 'express';
 import { Images } from './images.entity';
 import { PaginationImagesDto } from './dto/pagination-images.dto';
+import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
+import { ApiBearerAuth } from '@nestjs/swagger';
 
-
+@ApiBearerAuth()
+@UseGuards( JwtAuthGuard )
 @Controller('images')
 export class ImagesController {
   constructor ( private readonly imagesService: ImagesService ){}

@@ -12,12 +12,12 @@ export class AuthsController {
 
 
     
-    // @Post( 'register' )
-    // registerUser( @Body()  userObject: RegisterAuthDto ) {
-    //     console.log( { body: userObject } )
-    //     return this.authsService.register( userObject ) ; 
+    @Post( 'register' )
+    registerUser( @Body()  userObject: RegisterAuthDto ) {
+        console.log( { body: userObject } )
+        return this.authsService.register( userObject ) ; 
        
-    // }
+    }
 
     @Post( 'login' )
     loginIUser( @Body() userObjectLogin: AuthDto ){

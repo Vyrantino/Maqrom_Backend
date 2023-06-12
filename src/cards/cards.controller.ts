@@ -17,17 +17,19 @@ import { UpdateCardDto } from './dto/update-card.dto';
 
 import { ApiBearerAuth , ApiTags } from '@nestjs/swagger';
 import { query } from 'express';
+import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 
 
 
 
 
 @ApiBearerAuth()
+@UseGuards( JwtAuthGuard )
 @ApiTags( 'Cards' )
 @Controller('cards')
 export class CardsController {
   constructor( private cardsService: CardsService ){}
-      // @UseGuards( JwtAuthGuard )
+      
 
 
       @Get('route/:route')

@@ -7,12 +7,17 @@ import {
   ParseIntPipe,
   Patch,
   Post,
+  UseGuards,
 } from '@nestjs/common';
 import { CarouselItemsService } from './carouselItems.service';
 import { CarouselItems } from './carouselItems.entity';
 import { CreateCarouselItem } from './dto/create-carouselItem.dto';
 import { UpdateCarouselDto } from './dto/update-carousel.dto';
+import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
+import { ApiBearerAuth } from '@nestjs/swagger';
 
+@ApiBearerAuth()
+@UseGuards( JwtAuthGuard )
 @Controller('carouselItems')
 export class CarouselsController {
   constructor( private carouselsService: CarouselItemsService ) {}

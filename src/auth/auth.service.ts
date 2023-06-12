@@ -17,13 +17,13 @@ export class AuthsService{
         private jwtService: JwtService
      ) {}
 
-        async register( userObject: RegisterAuthDto ){
-            const { password } = userObject ; 
-            const plainToHash = await hash( password, 10 ) ;
-            userObject = { ...userObject, password: plainToHash };
-            const newUser = this.authsRepository.create( userObject ) ;
-            return this.authsRepository.save( newUser )
-        }
+    async register( userObject: RegisterAuthDto ){
+        const { password } = userObject ; 
+        const plainToHash = await hash( password, 10 ) ;
+        userObject = { ...userObject, password: plainToHash };
+        const newUser = this.authsRepository.create( userObject ) ;
+        return this.authsRepository.save( newUser ) ; 
+    }
 
     async login( userObjectLogin: AuthDto ) {
         const { email , password } = userObjectLogin ; 

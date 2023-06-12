@@ -7,13 +7,17 @@ import {
   ParseIntPipe,
   Patch,
   Post,
+  UseGuards,
 } from '@nestjs/common';
 import { PapersService } from './papers.service';
 import { Papers } from './papers.entity';
 import { UpdatePaperDto } from './dto/update-paper.dto';
 import { CreatePaperDto } from './dto/create-paper.dto';
+import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
+import { ApiBearerAuth } from '@nestjs/swagger';
 
-
+@ApiBearerAuth()
+@UseGuards( JwtAuthGuard )
 @Controller('papers')
 export class PapersController {
   constructor( private papersService: PapersService ) {}
