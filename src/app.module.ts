@@ -33,7 +33,7 @@ import { join } from 'path';
       password: 'Vyrant-93',
       database: 'maqrom',
       entities: [Cards, Auths, Images, CarouselItems, Papers, Articles, Galleries],
-      synchronize: true, /* Desactivar cuando pase a modo produccion */
+      synchronize: false, /* Desactivar cuando pase a modo produccion */
     }),
     HttpModule,
     CardsModule,
